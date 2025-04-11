@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, purple, silver);
+            background-size: 200% 200%;
+            animation: gradientAnimation 5s infinite alternate;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: left top; }
+            100% { background-position: right bottom; }
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            height: 20vw;
+            width: 80vw;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #fccb90);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+        .date {
+            color: purple;
+            font-size: 2vw;
+        }
+        #countdown {
+            font-size: 5vw;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="date">❤️ Countdown to April 19</p> 
+        <p id="countdown"></p>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            let now = new Date();
+            let currentMonth = now.getMonth();
+            let currentDay = now.getDate();
+
+            // If today is June 28, redirect to partytest.html after 3 seconds
+            if (currentMonth === 3 && currentDay === 19) {  // June = 5 in JS
+                document.getElementById("countdown").innerText = "🎉 Party Time! Redirecting... 🎉";
+                setTimeout(() => {
+                    window.location.href = "partytest.html";
+                }, 3000); 
+                return;
+            }
+
+            // Set target date to April 19 of the current year
+            let targetDate = new Date(now.getFullYear(), 3, 19, 23, 59, 59);
+
+            // If today is already past June 28, move to next year's June 28
+            if (now > targetDate) {
+                targetDate.setFullYear(now.getFullYear() + 1);
+            }
+
+            let difference = targetDate - now;
+            let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
