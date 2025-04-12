@@ -14,6 +14,7 @@
             background: linear-gradient(90deg, purple, silver);
             background-size: 200% 200%;
             animation: gradientAnimation 4s infinite alternate;
+            margin:0px
         }
         @keyframes gradientAnimation {
             0% {
@@ -92,7 +93,7 @@
 <body>
     <div class="container">
         <p>Enter Password</p>
-        <input type="password" id="password" placeholder="Enter your fav person dob...(DDMMMYYYY)">
+        <input type="password" id="password" placeholder="Enter your fav person dob...(DDMMYYYY)">
         <br>
         <button onclick="checkPassword()">Login</button>
         <p id="error" style="color: red; display: none;">Incorrect Password!</p>
