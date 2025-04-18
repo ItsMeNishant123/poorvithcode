@@ -54,7 +54,7 @@
             let currentDay = now.getDate();
 
             // If today is June 28, redirect to partytest.html after 3 seconds
-            if (currentMonth === 3 && currentDay === 19) {  // June = 5 in JS
+            if (currentMonth === 3 && currentDay === 18) {  // June = 5 in JS
                 document.getElementById("countdown").innerText = "🎉 Party Time! Redirecting... 🎉";
                 setTimeout(() => {
                     window.location.href = "partytest.html";
@@ -63,7 +63,7 @@
             }
 
             // Set target date to April 19 of the current year
-            let targetDate = new Date(now.getFullYear(), 3, 19, 23, 59, 59);
+            let targetDate = new Date(now.getFullYear(), 3, 18, 23, 59, 59);
 
             // If today is already past June 28, move to next year's June 28
             if (now > targetDate) {
